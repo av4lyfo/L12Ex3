@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar, StyleSheet, Text, View } from 'react-native';
-import { Accelerometer } from 'expo-sensors';
+import { Gyroscope } from 'expo-sensors';
 import { Audio } from 'expo-av';
 
 const styles = StyleSheet.create({
@@ -22,9 +22,9 @@ export default function App() {
   const [mySound, setMySound] = useState();
 
   useEffect(() => {
-    Accelerometer.setUpdateInterval(100);
+    Gyroscope.setUpdateInterval(100);
 
-    const subscription = Accelerometer.addListener((data) => {
+    const subscription = Gyroscope.addListener((data) => {
       setData(data);
 
       if (Math.abs(data.x - x) > 0.2 || Math.abs(data.y - y) > 0.2 || Math.abs(data.z - z) > 0.2) {
